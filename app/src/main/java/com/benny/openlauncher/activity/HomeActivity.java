@@ -34,6 +34,8 @@ import com.benny.openlauncher.activity.homeparts.HpDesktopOption;
 import com.benny.openlauncher.activity.homeparts.HpDragOption;
 import com.benny.openlauncher.activity.homeparts.HpInitSetup;
 import com.benny.openlauncher.activity.homeparts.HpSearchBar;
+import com.benny.openlauncher.activity.weblauncher.AllFunctionWebviewSetter;
+import com.benny.openlauncher.activity.weblauncher.WebviewPlugin;
 import com.benny.openlauncher.interfaces.AppDeleteListener;
 import com.benny.openlauncher.interfaces.AppUpdateListener;
 import com.benny.openlauncher.manager.Setup;
@@ -71,7 +73,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public final class HomeActivity extends Activity implements OnDesktopEditListener {
+public class HomeActivity extends Activity implements OnDesktopEditListener {
     public static final Companion Companion = new Companion();
     public static final int REQUEST_CREATE_APPWIDGET = 0x6475;
     public static final int REQUEST_PERMISSION_STORAGE = 0x3648;
@@ -200,6 +202,9 @@ public final class HomeActivity extends Activity implements OnDesktopEditListene
         }
 
         init();
+
+        WebviewPlugin webviewPlugin=new WebviewPlugin(this,getLayoutInflater().inflate(R.layout.view_home, null));
+
     }
 
     private void init() {
@@ -494,6 +499,8 @@ public final class HomeActivity extends Activity implements OnDesktopEditListene
                 _appWidgetHost.deleteAppWidgetId(appWidgetId);
             }
         }
+        AllFunctionWebviewSetter.onActivityResult(requestCode,resultCode,data);
+
     }
 
     @Override

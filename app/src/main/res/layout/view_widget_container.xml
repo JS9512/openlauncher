@@ -12,7 +12,8 @@
         android:scaleX="0"
         android:scaleY="0"
         android:src="@drawable/ic_expand"
-        android:tint="?android:textColorPrimary" />
+        android:tint="?android:textColorPrimary" 
+        />
 
     <ImageButton
         android:id="@+id/horiexpand"
